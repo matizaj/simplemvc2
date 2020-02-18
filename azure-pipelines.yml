@@ -20,9 +20,10 @@ steps:
 - task: DotNetCoreCLI@2
   displayName: "Publish"
   inputs:
-   command: "publish"
-   zipAfterPublish: false
-   arguments: -c=Release o=build
+   command: publish
+    publishWebProjects: True
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: False
 
 - task: Docker@2
   displayName: Build an image
