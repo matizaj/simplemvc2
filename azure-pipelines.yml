@@ -22,3 +22,14 @@ steps:
    command: test
    projects: '**/*Tests/*.csproj'
    arguments: '--configuration $(buildConfiguration)'
+
+- task: DotNetCoreCli@2
+  displayName: 'dotnet publish  --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+  inputs:
+   command: publish
+   projects: 'SimpleMVC2/SimpleMVC2.csproj'
+   arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+   zipAfterPublish: true
+
+- task: PublishBuildArtifacts@1
+  displayName: 'publish artifacs'
