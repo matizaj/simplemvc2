@@ -15,3 +15,10 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+
+- task: DotNetCoreCli@2
+  displayName: Unit test
+  inputs:
+   command: test
+   projects: '**/*Tests/*.csproj'
+   arguments: '--configuration $(buildConfiguration)'
