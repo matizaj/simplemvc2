@@ -15,3 +15,11 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+
+- taks: Docker@2
+  displayName: Build an image
+  inputs:
+   repository: $(repositoryName)
+   command: build
+   dockerfile: **/Dockerfile
+
