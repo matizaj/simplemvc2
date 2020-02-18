@@ -21,5 +21,4 @@ steps:
   inputs:
    repository: $(repositoryName)
    command: build
-   dockerfile: **/Dockerfile
 
